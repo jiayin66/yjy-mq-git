@@ -1,10 +1,13 @@
 spring:
-  activemq:
-    broker-url: tcp://127.0.0.1:61616
-    user: admin
-    password: admin
-  jms: 
-    pub-sub-domain: true
-topicname: springboot-queue
+   mail:
+    host: smtp.163.com
+    username: zypyjy@163.com
+    password: yjy1234
+    enable:  true
+    smtp:
+      auth: true
+    starttls:
+      enable: true
+      required: true
 server:
   port: 8080
