@@ -1,32 +1,22 @@
 package com.yjy.mq;
 
-import javax.jms.Queue;
-import javax.jms.Topic;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
 
-import org.apache.activemq.command.ActiveMQQueue;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.jms.core.JmsMessagingTemplate;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.stereotype.Component;
+import com.rabbitmq.client.AMQP.Queue.DeclareOk;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
 
-@Component
-public class ProductTest implements CommandLineRunner{
-	@Autowired
-	private Topic topic;
-	@Autowired
-	private JmsMessagingTemplate jmsMessagingTemplate;
+public class ProductTest {
 	
-	public void sendMessage() {
-		for(int i=0;i<10;i++) {
-			jmsMessagingTemplate.convertAndSend(topic, "消息"+i);
-		}
-		
+	private static String queueName="text-message";
+	public static void main(String[] args) throws IOException, TimeoutException {
+		Connection newConnection = MQConnectionUtils.newConnection();
+		Channel channel = newConnection.createChannel();
+		DeclareOk queueDeclare = channel.queueDeclare(queueName, false, false, false, null);
+		channel.basicPublish("", queueName, null, "鄢家银".getBytes());
+		System.out.println("生产者投递消息成功");
+		channel.close();
+		newConnection.close();
 	}
-
-	public void run(String... arg0) throws Exception {
-		sendMessage();
-		
-	}
-}
+}	
