@@ -1,11 +1,11 @@
-package com.yjy.mq;
+package com.yjy.mq.putong;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.AMQP.Queue.DeclareOk;
-
+import com.yjy.mq.MQConnectionUtils;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DefaultConsumer;
@@ -18,7 +18,7 @@ public class ConsumerQueueTest1 {
 		Connection newConnection = MQConnectionUtils.newConnection();
 	final	Channel channel = newConnection.createChannel();
 		DeclareOk queueDeclare = channel.queueDeclare(queueName, false, false, false, null);
-		channel.basicQos(2);
+		//channel.basicQos(1);
 		DefaultConsumer defaultConsumer =new DefaultConsumer (channel) {
 
 			public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body)
@@ -30,11 +30,15 @@ public class ConsumerQueueTest1 {
 					// TODO: handle exception
 				}
 				System.out.println("消费者1获取消息:" + msgString);
+				if(true)
+				throw new RuntimeException("测试异常");
+			
 				channel.basicAck(envelope.getDeliveryTag(), false);
 			}
 		};
 
 		// 3.监听队列
+		//第二个参数是true表示自动，false手动
 		channel.basicConsume(queueName, false, defaultConsumer);
 
 		

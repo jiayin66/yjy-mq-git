@@ -1,9 +1,10 @@
-package com.yjy.mq;
+package com.yjy.mq.putong;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.AMQP.Queue.DeclareOk;
+import com.yjy.mq.MQConnectionUtils;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
