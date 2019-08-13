@@ -1,10 +1,12 @@
 spring:
-  activemq:
-    broker-url: tcp://127.0.0.1:61616
-    user: admin
-    password: admin
-  jms: 
-    pub-sub-domain: true
-topicname: springboot-queue
-server:
-  port: 8080
+  rabbitmq:
+  ####连接地址
+    host: 127.0.0.1
+   ####端口号   
+    port: 5672
+   ####账号 
+    username: admin_yjy
+   ####密码  
+    password: 123456
+   ### 地址
+    virtual-host: /yjy
