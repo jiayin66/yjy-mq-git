@@ -1,12 +1,33 @@
-spring:
-  rabbitmq:
-  ####连接地址
-    host: 127.0.0.1
-   ####端口号   
-    port: 5672
-   ####账号 
-    username: admin_yjy
-   ####密码  
-    password: 123456
-   ### 地址
-    virtual-host: /yjy
+spring: 
+  application: 
+    name: yjy-mq
+  cloud: 
+    stream: 
+      default-binder: rabbit
+      bindings: 
+        event_yjy: 
+          content-type: application/x-java-object
+          group: ${spring.application.name}
+    
+#  rabbitmq: 
+#      addresses: 127.0.0.1:5672
+#      username: admin_yjy
+#      password: 123456
+#      virtual-host: /yjy    
+#  rabbitmq: 
+#      host: 127.0.0.1
+#      port: 5672
+#      username: admin_yjy
+#      password: 123456
+#      virtualHost: /yjy    
+#      binders: 
+#         rabbit: 
+#          type: rabbit
+#          environment:
+#            spring: 
+#              rabbitmq: 
+#                addresses: 127.0.0.1:5672
+#                username: admin_yjy
+#                password: 123456
+#                virtual-host: /yjy
+ 
