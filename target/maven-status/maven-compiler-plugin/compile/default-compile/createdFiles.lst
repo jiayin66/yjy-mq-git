@@ -1,5 +1,4 @@
 com\yjy\mq\listen\MessageListen.class
-com\yjy\mq\io\MessageInput.class
-com\yjy\mq\io\MessageOutPut.class
 com\yjy\mq\controller\RubbitMQController.class
+com\yjy\mq\io\MessageOutPut.class
 com\yjy\mq\RubbitMQApplication.class
