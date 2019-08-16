@@ -5,7 +5,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 public interface MessageInput {
-	 String EXCHANGE_NAME="event_yjy1";
+	 String EXCHANGE_NAME="event_yjy";
 	    @Input(EXCHANGE_NAME)
 	    SubscribableChannel  getInputChannel();
 }
