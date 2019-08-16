@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.yjy.mq.io.MessageInput;
 
 @Service
-@EnableBinding(MessageInput.class)
+//@EnableBinding(MessageInput.class)
 public class MessageListen {
 	@StreamListener(MessageInput.EXCHANGE_NAME)
 	public void getMessage(String message) {
