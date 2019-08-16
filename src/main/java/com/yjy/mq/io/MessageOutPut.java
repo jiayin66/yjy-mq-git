@@ -5,7 +5,6 @@ import org.springframework.messaging.MessageChannel;
 
 public interface MessageOutPut {
 	String EXCHANGE_NAME="event_yjy";
-
 	  @Input(EXCHANGE_NAME)
 	  MessageChannel getOutputChannel();
 }

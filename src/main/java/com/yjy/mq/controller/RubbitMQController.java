@@ -1,15 +1,18 @@
 package com.yjy.mq.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yjy.mq.io.MessageInput;
 import com.yjy.mq.io.MessageOutPut;
 
 @RestController
+@EnableBinding(MessageOutPut.class)
 public class RubbitMQController {
 	@Autowired
 	private MessageOutPut messageOutPut;
