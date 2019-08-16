@@ -9,11 +9,11 @@ spring:
           content-type: application/x-java-object
           group: ${spring.application.name}
     
-#  rabbitmq: 
-#      addresses: 127.0.0.1:5672
-#      username: admin_yjy
-#      password: 123456
-#      virtual-host: /yjy    
+  rabbitmq: 
+      addresses: 127.0.0.1:5672
+      username: admin_yjy
+      password: 123456
+      virtual-host: /yjy    
 #  rabbitmq: 
 #      host: 127.0.0.1
 #      port: 5672
