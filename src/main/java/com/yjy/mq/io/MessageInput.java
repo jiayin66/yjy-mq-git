@@ -8,4 +8,6 @@ public interface MessageInput {
 	 String EXCHANGE_NAME="event_yjy";
 	    @Input(EXCHANGE_NAME)
 	    SubscribableChannel  getInputChannel();
+	    @Input("event_yjy1")
+	    SubscribableChannel  getInputChannel2();
 }
